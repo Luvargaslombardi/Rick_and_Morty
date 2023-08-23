@@ -1,17 +1,18 @@
 import Card from './Card';
 
-const Cards= ({characters}) =>  {
+const Cards= ({characters, onClose}) =>  {
    return <div> {
-      characters.map ((char)=> {
+      characters.map ((characters)=> {
          return <Card
-         key={char.id}
-         name={char.name}
-         species={char.species}
-         gender={char.gender}
-         image={char.image}
-         status={char.status}
-         onClose={() => window.alert("Emulamos que se cierra la card")}
-         origin={char.origin.name} />
+         id= {characters.id}
+         key={characters.id}
+         name={characters.name}
+         species={characters.species}
+         gender={characters.gender}
+         image={characters.image}
+         status={characters.status}
+         onClose={onClose}
+         origin={characters.origin.name} />
       })
       }
    </div>;
