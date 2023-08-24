@@ -1,15 +1,15 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Detail= () => {
 const {id} = useParams();
-const {character, setCharacter} = useState({});
+const {character,setCharacter} = useState({});
 
 useEffect(()=>{
     axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
         if (data.name) {
-           setCharacters((oldChars) => [...oldChars, data]);
+           "setCharacters"((oldChars) => [...oldChars, data]);
         } else {
            window.alert('¡No hay personajes con este ID!');
         }
@@ -25,6 +25,10 @@ return setCharacter({});
 <h1>Specie: "{character.species && character.species}" </h1>
 <h1>Gender: "{character.gender && character.gender}" </h1>
 <h1>Origin: "{character.origin?.name && character.origin?.name}" </h1>
+    
+    <Link to="/home">
+    <button>Home</button>
+    </Link>
     </div>
     )
 };
