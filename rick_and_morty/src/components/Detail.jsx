@@ -15,7 +15,7 @@ useEffect(()=>{
         }
      });
 return setCharacter({});
-}, [id])
+}, [id]);
 
     return (
 <div>
