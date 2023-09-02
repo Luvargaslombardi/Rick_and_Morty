@@ -24,14 +24,22 @@ case "FILTER":
         ...state,
         myFavorites: allCharactersFiltered
     }
-case "ORDER":
-const allCharactersFavCopy= {...state.allCharactersFav};
-return{ ...state,
-myFavorites: 
-action.payload === "A"
-? allCharactersFavCopy.sort((a,b)=> a.id - b.id):   allCharactersFavCopy.sort((a,b)=> b.id - a.id)
+// case "ORDER":
+// const allCharactersFavCopy= {...state.allCharactersFav};
+// return{ ...state,
+// myFavorites: 
+// action.payload === "A"
+// ? allCharactersFavCopy.sort((a,b)=> a.id - b.id):   allCharactersFavCopy.sort((a,b)=> b.id - a.id)
 
-}
+// }
+case "ORDER":
+  const allCharactersFavCopy = [...state.allCharactersFav]; // Cambiar {...} a [...]
+  return {
+    ...state,
+    myFavorites: action.payload === "A"
+      ? allCharactersFavCopy.sort((a, b) => a.id - b.id)
+      : allCharactersFavCopy.sort((a, b) => b.id - a.id),
+  };
     default:
         return {...state};
 }

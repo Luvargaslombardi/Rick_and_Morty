@@ -4,27 +4,49 @@ import { Link, useParams } from "react-router-dom";
 
 const Detail= () => {
 const {id} = useParams();
-const {character,setCharacter} = useState({});
+const [characters,setCharacters] = useState({});
 
-useEffect(()=>{
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+// useEffect(()=>{
+//     axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+//         if (data.name) {
+//            setCharacters((oldChars) => [...oldChars, data]);
+//         } else {
+//            window.alert('¡No hay personajes con este ID!');
+//         }
+//      });
+// return setCharacters({});
+// }, [id]);  https://rickandmortyapi.com/api/character/
+useEffect(() => {
+    axios(`https://rickandmortyapi.com/api/character/${id}`)
+      .then(({ data }) => {
         if (data.name) {
-           "setCharacters"((oldChars) => [...oldChars, data]);
+          setCharacters(data);
         } else {
-           window.alert('¡No hay personajes con este ID!');
+          window.alert('¡No hay personajes con este ID!');
         }
-     });
-return setCharacter({});
-}, [id]);
+      })
+      .catch((error) => {
+        if (error.response) {
+            console.error("Error de respuesta:", error.response.status);
+            // Maneja el error según el código de estado aquí
+          } else if (error.request) {
+            console.error("Error de solicitud:", error.request);
+            // Maneja errores de solicitud (p. ej., problemas de red)
+          } else {
+            console.error("Error general:", error.message);
+            // Maneja otros tipos de errores
+          }
 
+            });
+  }, [id]);
     return (
 <div>
-    <img src="{character.image && character.image}" alt="{}" />
-<h1>Name: "{character.name && character.name}" </h1>
-<h1>Status: "{character.status && character.status}" </h1>
-<h1>Specie: "{character.species && character.species}" </h1>
-<h1>Gender: "{character.gender && character.gender}" </h1>
-<h1>Origin: "{character.origin?.name && character.origin?.name}" </h1>
+<img src= {characters.image && characters.image} alt={characters.name} />
+<h1>Name: "{characters.name && characters.name}" </h1>
+<h1>Status: "{characters.status && characters.status}" </h1>
+<h1>Specie: "{characters.species && characters.species}" </h1>
+<h1>Gender: "{characters.gender && characters.gender}" </h1>
+<h1>Origin: "{characters.origin?.name && characters.origin?.name}" </h1>
     
     <Link to="/home">
     <button>Home</button>

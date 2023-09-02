@@ -1,7 +1,7 @@
 import Card from "./Card";
 import {useSelector, useDispatch } from "react-redux";
 // import { useState } from "react";
-import { orderCards, filterCards } from "./Redux/actions";
+import { orderCards, filterCards , removeFav} from "./Redux/actions";
 
 
 const Favorites = () => {
@@ -10,6 +10,12 @@ const Favorites = () => {
     // setAux=(!aux);
     const dispatch= useDispatch();
     const myFavorites= useSelector((state)=>state.myFavorites);
+
+    const handleClose = (id) => {
+        // Función para eliminar un personaje de favoritos
+        dispatch(removeFav(id));
+      };
+
     const handlerOrder =(event) => {
 dispatch(orderCards(event.target.value))
 };
@@ -31,23 +37,20 @@ return (
         <option value="Genderless">Genderless</option>
         <option value="Unknown">Unknown</option> 
     </select>
-
-    {
-    myFavorites?.map(({id,name,status,species,gender,origin,image,onclose})=>{
-return (
-    <Card>
-    key={id}
-    name={name}
-    status={status}
-    species={species}
-    gender={gender}
-    origin={origin}
-    image={image}
-    onclose={onclose}
-    </Card>
-)
-})
-    }
+    {myFavorites?.map(({ id, name, status, species, gender, origin, image }) => {
+        return (
+          <Card
+            key={id}
+            name={name}
+            status={status}
+            species={species}
+            gender={gender}
+            origin={origin}
+            image={image}
+            onClose={() => handleClose(id)}
+          />
+        );
+      })}
     </div>
 )
 };

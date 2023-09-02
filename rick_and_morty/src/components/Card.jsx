@@ -18,28 +18,29 @@ useEffect(() => {
          setIsFavs(true);
       }
    });
-}, [myFavorites]);
+}, [myFavorites, id]);
 
    return (
       <div>
- ( <button onClick={handleFavorite}>{isFav? "❤️" : "🤍"}</button>);
+  <button onClick={handleFavorite}>{isFav? "❤️" : "🤍"}</button>
       
-      (<Link to={"/detail/${id}"}>
-      
-         <button onClick={()=>{onClose(id)}}>X</button>
+ <button onClick={()=>onClose(id)}>X</button>
+      <Link to={`/detail/${id}`} key={id}>
+
+   
          <h2>Name:{name} </h2>
          <h2>Status:{status}</h2>
          <h2>Species:{species}</h2>
          <h2>Gender:{gender}</h2>
          <h2>Origin:{origin}</h2>
          <img src={image} alt={name} />
-      </Link>)
+      </Link>
  </div>
    ); 
 } 
 const mapDispatchToProps= (dispatch) => {
    return {
-      addFav: (character) =>  dispatch(addFav(character)),
+      addFav: (characters) =>  dispatch(addFav(characters)),
       removeFav: (id) => dispatch(removeFav(id)),
    };
 }
@@ -48,8 +49,6 @@ return {
    myFavorites: state.myFavorites,
 }
 };
-
-
 
 
 export default connect (mapStateToProps,mapDispatchToProps) (Card)

@@ -13,6 +13,7 @@ return(
     <NavLink to= "/about">
 <button>About</button>
     </NavLink>
+    
     <NavLink to= "/favorites">
 <button>Favorites</button>
     </NavLink>
