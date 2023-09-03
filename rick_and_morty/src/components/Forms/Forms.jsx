@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Validation from "./Validation";
+import Validation from "../Validation";
  export const Forms = (props) => {
     const [userData, setUserData] = useState({
 email: "",

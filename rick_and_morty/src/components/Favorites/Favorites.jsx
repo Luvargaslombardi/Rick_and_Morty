@@ -1,7 +1,7 @@
-import Card from "./Card";
+import Card from "../Card/Card";
 import {useSelector, useDispatch } from "react-redux";
 // import { useState } from "react";
-import { orderCards, filterCards , removeFav} from "./Redux/actions";
+import { orderCards, filterCards , removeFav} from "../Redux/actions";
 
 
 const Favorites = () => {

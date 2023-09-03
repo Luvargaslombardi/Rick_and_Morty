@@ -1,13 +1,13 @@
 import './App.css';
-import Cards from './components/Cards.jsx';
-import Nav from './components/Nav';
+import Cards from './components/Cards/Cards.jsx';
+import Nav from './components/Nav/Nav';
 import {useState} from 'react';
 import axios from "axios";
 import {Routes, Route, useLocation, useNavigate} from "react-router-dom";
-import About from './components/About';
-import Detail from './components/Detail';
-import Forms from './components/Forms';
-import Favorites from './components/Favorites';
+import About from './components/About/About';
+import Detail from './components/Detail/Detail';
+import Forms from './components/Forms/Forms';
+import Favorites from './components/Favorites/Favorites';
 const  EMAIL = "any.vargas231095@gmail.com"
 const PASSWORD= "123456"
 
