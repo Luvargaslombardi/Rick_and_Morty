@@ -1,46 +1,58 @@
+/* Forms.module.css */
+
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .form {
-    background-color: #56ed5b;
-    border-radius: 10px;
-    padding: 50px;
-    box-shadow: 24px 2px 0px 444px rgba(57, 55, 55, 0.134);
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .form label {
-    font-weight: bold;
-  }
-  
-  .form input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 70px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .form hr {
-    margin: 15px 0;
-  }
-  
-  .form button {
-    background-color: #1fdf2b;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .form button:hover {
-    background-color: #0d945c;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: transparent; /* Fondo transparente */
+}
+
+.form {
+  background-color: #373f51; /* Fondo de formulario */
+  border-radius: 10px;
+  padding: 50px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Sombra ligera */
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.label {
+  font-weight: bold;
+  color: #fff; /* Texto en blanco */
+  font-size: 30px;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #eee; /* Fondo del input */
+  color: #333; /* Texto oscuro en el input */
+}
+
+.hr {
+  margin: 15px 0;
+  border-color: #fff; /* Línea horizontal blanca */
+}
+
+.error {
+  color: #ff5050; /* Texto de error en rojo */
+}
+
+.submitButton {
+  background-color: #7d2ae8; /* Púrpura Rick and Morty */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.submitButton:hover {
+  background-color: #541aa3; /* Púrpura más oscuro al pasar el mouse */
+}

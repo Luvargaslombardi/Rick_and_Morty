@@ -1,26 +1,28 @@
+
 .container {
-    background-color: #000;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px auto;
-    width: 300px;
-    text-align: center;
-  }
-  
-  h1 {
-    color: #fff;
-  }
-  
-  button {
-    background-color: #0099cc;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 5px;
-  }
-  
-  button:hover {
-    background-color: #0077aa;
-  }
-  
+  background-color: #fbf9f9;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  width: 300px;
+  text-align: center;
+  color: #0d0202;
+}
+
+h1 {
+  font-size: 24px; /* Cambia el tamaño de la fuente según tu preferencia */
+  margin-bottom: 20px; /* Espacio adicional debajo del título */
+}
+
+button {
+  background-color: #0099cc;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #0077aa;
+}

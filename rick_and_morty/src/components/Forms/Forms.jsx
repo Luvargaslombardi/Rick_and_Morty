@@ -23,33 +23,39 @@ export const Forms = (props) => {
   return (
     <div className={style.container}>
       <form className={style.form}>
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email" className={style.label}>
+          Email:
+        </label>
         <input
           onChange={handleChange}
           value={userData.email}
           type="text"
           name="email"
+          className={style.input}
         />
         {errors.e1 ? (
-          <p>{errors.e1} </p>
+          <p className={style.error}>{errors.e1} </p>
         ) : errors.e2 ? (
-          <p>{errors.e2} </p>
+          <p className={style.error}>{errors.e2} </p>
         ) : (
-          <p>{errors.e3} </p>
+          <p className={style.error}>{errors.e3} </p>
         )}
 
-        <hr />
-        <label htmlFor="password">Password:</label>
+        <hr className={style.hr} />
+        <label htmlFor="password" className={style.label}>
+          Password:
+        </label>
         <input
           onChange={handleChange}
           value={userData.password}
           type="password"
           name="password"
+          className={style.input}
         />
         {errors.p1 ? (
-          <p>{errors.p1} </p>
+          <p className={style.error}>{errors.p1} </p>
         ) : (
-          <p>{errors.p2} </p>
+          <p className={style.error}>{errors.p2} </p>
         )}
         <br />
         <button onClick={handleSubmit} type="submit" className={style.submitButton}>
