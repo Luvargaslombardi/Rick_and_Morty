@@ -1,58 +1,47 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import axios from "axios";
+import style from "../Detail/Detail.module.css" // Asegúrate de importar el archivo de estilos adecuado
 
-const Detail= () => {
-const {id} = useParams();
-const [characters,setCharacters] = useState({});
+const Detail = () => {
+  const { id } = useParams();
+  const [character, setCharacter] = useState({});
+  const [error, setError] = useState(null);
 
-// useEffect(()=>{
-//     axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
-//         if (data.name) {
-//            setCharacters((oldChars) => [...oldChars, data]);
-//         } else {
-//            window.alert('¡No hay personajes con este ID!');
-//         }
-//      });
-// return setCharacters({});
-// }, [id]);  https://rickandmortyapi.com/api/character/
-useEffect(() => {
+  useEffect(() => {
     axios(`https://rickandmortyapi.com/api/character/${id}`)
       .then(({ data }) => {
         if (data.name) {
-          setCharacters(data);
+          setCharacter(data);
         } else {
-          window.alert('¡No hay personajes con este ID!');
+          setError("¡No hay personajes con este ID!");
         }
       })
       .catch((error) => {
-        if (error.response) {
-            console.error("Error de respuesta:", error.response.status);
-            // Maneja el error según el código de estado aquí
-          } else if (error.request) {
-            console.error("Error de solicitud:", error.request);
-            // Maneja errores de solicitud (p. ej., problemas de red)
-          } else {
-            console.error("Error general:", error.message);
-            // Maneja otros tipos de errores
-          }
-
-            });
+        setError("Error al cargar el personaje. Por favor, inténtalo de nuevo más tarde.");
+      });
   }, [id]);
-    return (
-<div>
-<img src= {characters.image && characters.image} alt={characters.name} />
-<h1>Name: "{characters.name && characters.name}" </h1>
-<h1>Status: "{characters.status && characters.status}" </h1>
-<h1>Specie: "{characters.species && characters.species}" </h1>
-<h1>Gender: "{characters.gender && characters.gender}" </h1>
-<h1>Origin: "{characters.origin?.name && characters.origin?.name}" </h1>
-    
-    <Link to="/home">
-    <button>Home</button>
-    </Link>
+
+  return (
+    <div className={style.detailContainer}>
+      {error ? (
+        <div className={style.error}>{error}</div>
+      ) : (
+        <div>
+          <img src={character.image} alt={character.name} />
+          <h1>Name: "{character.name}" </h1>
+          <h1>Status: "{character.status}" </h1>
+          <h1>Species: "{character.species}" </h1>
+          <h1>Gender: "{character.gender}" </h1>
+          <h1>Origin: "{character.origin?.name}" </h1>
+        </div>
+      )}
+
+      <Link to="/home">
+        <button>Home</button>
+      </Link>
     </div>
-    )
+  );
 };
 
 export default Detail;
