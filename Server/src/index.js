@@ -1,22 +1,28 @@
-const http = require("http");
-// const characters= require("./Utils/data")
-const {getCharById}= require("./Controllers/getCharById")
+const express = require("express");
+const server = express();
+const PORT = 3001;
+const router = require("./Routes/index.js");
+const morgan = require("morgan");
 
-http
-.createServer((req,res)=>{
-    res.setHeader('Access-Control-Allow-Origin', '*');
+server.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header(
+        'Access-Control-Allow-Headers',
+       'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    res.header(
+       'Access-Control-Allow-Methods',
+       'GET, POST, OPTIONS, PUT, DELETE'
+    );
+    next();
+ });
+ 
+ server.use(express.json());
+ server.use(morgan("dev"));
+ 
+ server.use("/rickandmorty", router);
 
-if(req.url.includes(`/rickandmorty/character`)){
-
-const id=req.url.split("/").at(-1);
-
-
-getCharById(res,Number(id));
-
-// let charactersFilter = characters.find((char)=>char.id===Number(id));
-
-// res.writeHead(200,{"Conten-type":"application/json"}).end(JSON.stringify(charactersFilter))
-}
-
-
-}) .listen(3001,"localhost")
+ server.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+ 
+ module.exports= server;
