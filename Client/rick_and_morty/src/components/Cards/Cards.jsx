@@ -15,7 +15,7 @@ const Cards = ({ characters, onClose }) => {
             image={character.image}
             status={character.status}
             onClose={onClose}
-            origin={character.origin.name}
+            origin={character.origin?.name}
           />
         );
       })}

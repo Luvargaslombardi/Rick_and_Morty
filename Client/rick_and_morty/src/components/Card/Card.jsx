@@ -51,9 +51,9 @@ function Card(props) {
           <button onClick={handleFavorite} className={style.favoriteButton}>
             {isFav ? "❤️" : "🤍"}
           </button>
-          <button onClick={() => onClose(id)} className={style.closeButton}>
+         {window.location.pathname==="/home" && (<button onClick={() => onClose(id)} className={style.closeButton}>
             X
-          </button>
+          </button>)}
         </div>
         <div className={style.cardBack}>
           <h2>Name: {name}</h2>
